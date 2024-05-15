@@ -1,11 +1,11 @@
 // config.js
 module.exports = {
-  username: "postgres",
-  password: "26339777",
-  database: "postgres",
-  host: "localhost",
-  puerto: "5432",
-  dialect: "postgres",
+  username: process.env.USERNAMEDB,
+  password: process.env.PASSDB,
+  database: process.env.DATABD,
+  host: process.env.HOSTBD,
+  puerto: process.env.PORTBD,
+  dialect: process.env.DIALECTBD,
   pool: {
     max: 5,
     min: 0,

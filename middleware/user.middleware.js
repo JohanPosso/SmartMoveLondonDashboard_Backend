@@ -5,7 +5,7 @@ const securityFunction = (req, res, next) => {
 
     if (!token) return res.status(401).json({ error: "Acceso denegado" });
     const decode = jwt.verify(token, "secret");
-    req.user = decode; // Para poder usarlo en otro lado
+    req.user = decode;
 
     next();
   } catch (error) {

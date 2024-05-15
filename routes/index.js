@@ -1,7 +1,8 @@
-const tokenMiddleware = require("../middleware/user.middleware"); //Middleware
-const loginController = require("../controllers/login.controller"); // Controllers
-const empleadoController = require("../controllers/empleado.controller"); // Controllers
-const tareaController = require("../controllers/tarea.controller"); // Controllers
+const tokenMiddleware = require("../middleware/user.middleware");
+const loginController = require("../controllers/login.controller");
+const empleadoController = require("../controllers/empleado.controller");
+const tareaController = require("../controllers/tarea.controller");
+const whatsappController = require("../controllers/whatsapp.controller");
 
 function allRoutes(app) {
   const router = require("express").Router();
@@ -16,6 +17,7 @@ function allRoutes(app) {
     // tokenMiddleware,
     tareaController.createTarea
   );
+  router.post("/sendmsg", whatsappController.sendMessage);
   router.get(
     "/todo",
     //  tokenMiddleware,

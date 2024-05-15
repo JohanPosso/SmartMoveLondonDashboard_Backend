@@ -19,7 +19,7 @@ const empleado = sequelize.define("empleados", {
   },
   segundo_apellido: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   email: {
     type: DataTypes.STRING,
@@ -70,7 +70,7 @@ const empleado = sequelize.define("empleados", {
     allowNull: true,
   },
 });
-Tarea.belongsTo(empleado, { foreignKey: "id_empleado" }); // Añade una clave foránea empleadoId a Tarea
-empleado.hasMany(Tarea, { foreignKey: "id_empleado" }); // Establece una relación de uno a muchos con Tarea
+Tarea.belongsTo(empleado, { foreignKey: "id_empleado" });
+empleado.hasMany(Tarea, { foreignKey: "id_empleado" });
 
 module.exports = empleado;
