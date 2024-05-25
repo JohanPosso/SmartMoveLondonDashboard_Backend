@@ -1,12 +1,12 @@
 const Empleado = require("../models/empleado");
 const jwt = require("jsonwebtoken");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await Empleado.findOne({ where: { email } });
-    // const desCryptPassword = bcrypt.compareSync(password, user.password);
+    const desCryptPassword = bcrypt.compareSync(password, user.password);
 
     if (!desCryptPassword)
       return res.status(404).json({ error: "Credenciales Incorrecta" });
