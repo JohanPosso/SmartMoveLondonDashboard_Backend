@@ -13,6 +13,11 @@ function allRoutes(app) {
     empleadoController.createUser
   );
   router.post(
+    "/crearadmin",
+    // tokenMiddleware,
+    empleadoController.createAdmin
+  );
+  router.post(
     "/creartarea",
     // tokenMiddleware,
     tareaController.createTarea

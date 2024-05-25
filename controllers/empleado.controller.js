@@ -14,9 +14,7 @@ const createUser = (req, res) => {
     genero,
     status,
     role_empleado,
-    // password,
   } = req.body;
-  // const passwordCrypt = bcrypt.hashSync(password, 10);
 
   const createUser = Empleado.create({
     nombres,
@@ -30,7 +28,6 @@ const createUser = (req, res) => {
     genero,
     status: true,
     role_empleado,
-    // password: passwordCrypt,
   })
 
     .then((createUser) => {
@@ -75,4 +72,43 @@ const changeStatus = async (req, res) => {
   }
 };
 
-module.exports = { createUser, findAll, changeStatus };
+const createAdmin = (req, res) => {
+  const {
+    nombres,
+    primer_apellido,
+    segundo_apellido,
+    email,
+    fecha_nacimiento,
+    telefono,
+    codigo_postal,
+    pais,
+    genero,
+    status,
+    role_empleado,
+    password,
+  } = req.body;
+  const passwordCrypt = bcrypt.hashSync(password, 10);
+
+  const createAdmin = Empleado.create({
+    nombres,
+    primer_apellido,
+    segundo_apellido,
+    email,
+    fecha_nacimiento,
+    telefono,
+    codigo_postal,
+    pais,
+    genero,
+    status: true,
+    role_empleado,
+    password: passwordCrypt,
+  })
+
+    .then((createAdmin) => {
+      res.json({ message: "Usuario creado exitosamente", createAdmin });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+module.exports = { createUser, createAdmin, findAll, changeStatus };
