@@ -1,5 +1,5 @@
 const Empleado = require("../models/empleado");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 const createUser = (req, res) => {
   const {
@@ -87,7 +87,7 @@ const createAdmin = (req, res) => {
     role_empleado,
     password,
   } = req.body;
-  const passwordCrypt = bcrypt.hashSync(password, 10);
+  // const passwordCrypt = bcrypt.hashSync(password, 10);
 
   const createAdmin = Empleado.create({
     nombres,
@@ -101,7 +101,7 @@ const createAdmin = (req, res) => {
     genero,
     status: true,
     role_empleado,
-    password: passwordCrypt,
+    // password: passwordCrypt,
   })
 
     .then((createAdmin) => {
