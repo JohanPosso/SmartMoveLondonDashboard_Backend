@@ -111,4 +111,10 @@ const createAdmin = (req, res) => {
       res.json(err);
     });
 };
-module.exports = { createUser, createAdmin, findAll, changeStatus };
+
+module.exports = {
+  createUser,
+  createAdmin,
+  findAll,
+  changeStatus,
+};

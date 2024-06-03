@@ -9,6 +9,8 @@ const createTarea = async (req, res) => {
     descripcion,
     id_empleado,
     prioridad,
+    hora,
+    direccion,
   } = req.body;
   const id_empleadoNumero = parseInt(id_empleado);
 
@@ -21,6 +23,8 @@ const createTarea = async (req, res) => {
       status,
       descripcion,
       prioridad,
+      hora,
+      direccion,
       id_empleado: id_empleadoNumero,
     });
 
