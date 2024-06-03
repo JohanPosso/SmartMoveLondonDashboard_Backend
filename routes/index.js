@@ -28,6 +28,7 @@ function allRoutes(app) {
     //  tokenMiddleware,
     empleadoController.findAll
   );
+
   router.get("/tarea", tareaController.getTarea);
   router.get("/statusempleado/:id", empleadoController.changeStatus);
   router.get("/statutask/:id", tareaController.changeStatus);

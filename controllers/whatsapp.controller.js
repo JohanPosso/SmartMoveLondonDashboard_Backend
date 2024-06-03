@@ -16,10 +16,9 @@ const sendMessage = async (req, res) => {
       });
       messages.push(message);
     }
-    res.json({ resp: "Mensajes enviados exitosamente", msgs: messages });
+    res.json({ resp: "Message sent successfully", msgs: messages });
   } catch (error) {
-    console.error("Error al enviar los mensajes:", error);
-    res.status(500).json({ error: "Error al enviar los mensajes" });
+    res.status(500).json({ error: "Error sending message" });
   }
 };
 
