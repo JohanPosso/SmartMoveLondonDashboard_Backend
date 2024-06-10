@@ -19,6 +19,6 @@ if (process.env.NODE_ENV === "production") {
     },
   });
 }
-sequelize.sync({ alter: true });
+// sequelize.sync({ alter: true });
 
 module.exports = sequelize;
