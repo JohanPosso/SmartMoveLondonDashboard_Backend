@@ -13,7 +13,6 @@ const createUser = (req, res) => {
     pais,
     genero,
     status,
-    role_empleado,
   } = req.body;
 
   const createUser = Empleado.create({
@@ -27,7 +26,6 @@ const createUser = (req, res) => {
     pais,
     genero,
     status: true,
-    role_empleado,
   })
 
     .then((createUser) => {
@@ -84,7 +82,6 @@ const createAdmin = (req, res) => {
     pais,
     genero,
     status,
-    role_empleado,
     password,
   } = req.body;
   const passwordCrypt = bcrypt.hashSync(password, 10);
@@ -100,7 +97,6 @@ const createAdmin = (req, res) => {
     pais,
     genero,
     status: true,
-    role_empleado,
     password: passwordCrypt,
   })
 
@@ -112,9 +108,54 @@ const createAdmin = (req, res) => {
     });
 };
 
+const editUser = (req, res) => {
+  const {
+    nombres,
+    primer_apellido,
+    segundo_apellido,
+    email,
+    fecha_nacimiento,
+    telefono,
+    codigo_postal,
+    pais,
+    genero,
+    status,
+    id_empleado,
+  } = req.body;
+
+  const editUser = Empleado.update(
+    {
+      nombres,
+      primer_apellido,
+      segundo_apellido,
+      email,
+      fecha_nacimiento,
+      telefono,
+      codigo_postal,
+      pais,
+      genero,
+      status: true,
+      id_empleado,
+    },
+    {
+      where: {
+        id_empleado,
+      },
+    }
+  )
+
+    .then((editUser) => {
+      res.json({ message: "Usuario modificado exitosamente", editUser });
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
 module.exports = {
   createUser,
   createAdmin,
   findAll,
   changeStatus,
+  editUser,
 };
