@@ -17,6 +17,11 @@ function allRoutes(app) {
     // tokenMiddleware,
     empleadoController.createAdmin
   );
+  router.put(
+    "/edituser/:id",
+    // tokenMiddleware,
+    empleadoController.editUser
+  );
   router.post(
     "/creartarea",
     // tokenMiddleware,
