@@ -32,6 +32,10 @@ const Tarea = sequelize.define("tarea", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  equipo: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   hora: {
     type: DataTypes.STRING,
     allowNull: true,
