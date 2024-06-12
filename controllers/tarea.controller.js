@@ -11,6 +11,7 @@ const createTarea = async (req, res) => {
     prioridad,
     hora,
     direccion,
+    equipo,
   } = req.body;
   const id_empleadoNumero = parseInt(id_empleado);
 
@@ -25,6 +26,7 @@ const createTarea = async (req, res) => {
       prioridad,
       hora,
       direccion,
+      equipo,
       id_empleado: id_empleadoNumero,
     });
 
@@ -82,4 +84,5 @@ const changeStatus = async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
+
 module.exports = { createTarea, getTarea, deletetarea, changeStatus };

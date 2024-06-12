@@ -27,6 +27,7 @@ function allRoutes(app) {
     // tokenMiddleware,
     tareaController.createTarea
   );
+
   router.post("/sendmsg", whatsappController.sendMessage);
   router.get(
     "/todo",
