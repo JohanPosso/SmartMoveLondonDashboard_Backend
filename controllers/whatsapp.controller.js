@@ -1,6 +1,6 @@
-const accountSid = process.env.TWILIOSID;
-const authToken = process.env.TWILIOAUTH;
-
+require("dotenv").config();
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
 const sendMessage = async (req, res) => {
@@ -8,17 +8,22 @@ const sendMessage = async (req, res) => {
   try {
     const messages = [];
     for (const messageData of messagesToSend) {
-      const { to, msg } = messageData;
+      const { to, contentVariables } = messageData;
       const message = await client.messages.create({
-        from: "whatsapp:+12248881170",
+        contentSid: process.env.TWILIO_CONTENT_SID,
+        from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
+        contentVariables: JSON.stringify(contentVariables),
+        messagingServiceSid: process.env.TWILIO_MESSAGING_SERVICE_SID,
         to: `whatsapp:${to}`,
-        body: msg,
       });
       messages.push(message);
     }
     res.json({ resp: "Message sent successfully", msgs: messages });
   } catch (error) {
-    res.status(500).json({ error: "Error sending message" });
+    console.error("Error sending message:", error); // Para loguear errores en la consola
+    res
+      .status(500)
+      .json({ error: "Error sending message", details: error.message });
   }
 };
 
