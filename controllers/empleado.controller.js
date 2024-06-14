@@ -10,6 +10,8 @@ const createUser = (req, res) => {
     fecha_nacimiento,
     telefono,
     codigo_postal,
+    direccion,
+    ciudad,
     pais,
     genero,
     status,
@@ -23,6 +25,8 @@ const createUser = (req, res) => {
     fecha_nacimiento,
     telefono,
     codigo_postal,
+    direccion,
+    ciudad,
     pais,
     genero,
     status: true,
@@ -120,6 +124,8 @@ const editUser = (req, res) => {
     pais,
     genero,
     status,
+    direccion,
+    ciudad,
     id_empleado,
   } = req.body;
 
@@ -135,6 +141,8 @@ const editUser = (req, res) => {
       pais,
       genero,
       status: true,
+      direccion,
+      ciudad,
       id_empleado,
     },
     {
@@ -152,10 +160,20 @@ const editUser = (req, res) => {
     });
 };
 
+const findEmployeeId = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const employee = await Empleado.findByPk(id);
+    res.json(employee);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 module.exports = {
   createUser,
   createAdmin,
   findAll,
   changeStatus,
   editUser,
+  findEmployeeId,
 };

@@ -22,6 +22,11 @@ function allRoutes(app) {
     // tokenMiddleware,
     empleadoController.editUser
   );
+  router.get(
+    "/empleado/:id",
+    // tokenMiddleware,
+    empleadoController.findEmployeeId
+  );
   router.post(
     "/creartarea",
     // tokenMiddleware,
